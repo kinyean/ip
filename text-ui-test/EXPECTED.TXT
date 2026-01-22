@@ -3,7 +3,9 @@ ____________________________________________________________
  What can I do for you?
 ____________________________________________________________
 
-added:test
+Got it. I've added this task:
+[T][ ] test
+Now you have 1 tasks in the list.
 Got it. I've added this task:
 [D][ ] dead (by: mon)
 Now you have 2 tasks in the list.

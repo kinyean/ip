@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
+public class KingException extends Exception{
 
-public class KingException {
+    public KingException(String message){
+        super(message);
+    }
 }

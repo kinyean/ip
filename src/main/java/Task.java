@@ -2,7 +2,8 @@ public class Task {
     protected Boolean isDone = false;
     protected String desc;
 
-    public Task(String desc) {
+    public Task(String desc) throws KingException {
+        if (desc.isEmpty()) throw new KingException("Task description cannot be empty");
         this.desc = desc;
     }
 
