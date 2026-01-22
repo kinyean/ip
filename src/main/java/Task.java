@@ -1,6 +1,6 @@
 public class Task {
-    private Boolean isDone = false;
-    private String desc;
+    protected Boolean isDone = false;
+    protected String desc;
 
     public Task(String desc) {
         this.desc = desc;
@@ -20,7 +20,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return this.desc;
+        return String.format("[T][%s] " + this.desc, this.getStatus());
     }
 
 }
