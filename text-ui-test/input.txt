@@ -1,0 +1,5 @@
+test
+deadline dead /by mon
+event project /from 4 /to 2
+list
+bye
