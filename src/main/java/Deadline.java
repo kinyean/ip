@@ -4,7 +4,12 @@ public class Deadline extends Task{
 
     public Deadline(String description, String by) throws KingException{
         super(description);
-        this.by = by;
+        this.by = by.trim();
+    }
+
+    @Override
+    public String toFileString() {
+        return String.format("D | %d | %s | %s", isDone? 1 : 0, this.desc, this.by);
     }
 
     @Override

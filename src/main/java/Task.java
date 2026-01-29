@@ -3,8 +3,10 @@ public class Task {
     protected String desc;
 
     public Task(String desc) throws KingException {
-        if (desc.isEmpty()) throw new KingException("Task description cannot be empty");
-        this.desc = desc;
+        if (desc.trim().isEmpty()) {
+            throw new KingException("Task description cannot be empty");
+        }
+        this.desc = desc.trim();
     }
 
     public String getStatus() {
@@ -17,6 +19,10 @@ public class Task {
 
     public void unmark() {
         this.isDone = false;
+    }
+
+    public String toFileString() {
+        return String.format("T | %d | %s", isDone? 1 : 0, this.desc);
     }
 
     @Override

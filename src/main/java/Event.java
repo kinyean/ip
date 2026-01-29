@@ -4,8 +4,13 @@ public class Event extends Task{
 
     public Event(String description, String from, String to) throws KingException{
         super(description);
-        this.from = from;
-        this.to = to;
+        this.from = from.trim();
+        this.to = to.trim();
+    }
+
+    @Override
+    public String toFileString() {
+        return String.format("E | %d | %s | from: %s to: %s ", isDone? 1 : 0, this.desc, this.from, this.to);
     }
 
     @Override
