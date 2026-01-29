@@ -10,6 +10,9 @@ import king.ui.Ui;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+/**
+ * A command that creates an Event task with two LocalDateTime
+ */
 public class EventCommand extends Command {
     private final String desc;
     private final LocalDateTime from;

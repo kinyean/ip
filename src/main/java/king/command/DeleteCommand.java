@@ -8,6 +8,9 @@ import king.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * Command that deletes a task
+ */
 public class DeleteCommand extends Command {
 
     private int index;

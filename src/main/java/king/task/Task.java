@@ -2,6 +2,10 @@ package king.task;
 
 import king.exception.KingException;
 
+/**
+ * Class that holds information about the task, a string description
+ * as well as a boolean to track if it is completed
+ */
 public class Task {
     protected Boolean isDone = false;
     protected String desc;
@@ -25,6 +29,10 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Returns a string to be stored in storage
+     * @return a String
+     */
     public String toFileString() {
         return String.format("T | %d | %s", isDone? 1 : 0, this.desc);
     }

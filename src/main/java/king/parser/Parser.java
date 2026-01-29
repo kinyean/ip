@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Class that contains various function to help parsing Strings
+ */
 public final class Parser {
 
     private Parser() {
@@ -19,6 +22,12 @@ public final class Parser {
     private static final DateTimeFormatter INPUT_FORMAT =
             DateTimeFormatter.ofPattern("d/MM/yyyy HHmm");
 
+    /**
+     * Returns a Command from parsing the user input
+     * @param input
+     * @return Command that can be executed
+     * @throws KingException if no such command exist
+     */
     public static Command parse(String input) throws KingException {
         String trimmed = input.trim();
         if (trimmed.isEmpty()) {

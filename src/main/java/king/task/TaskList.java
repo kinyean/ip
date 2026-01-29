@@ -3,6 +3,9 @@ package king.task;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that holds and manipulate list of tasks
+ */
 public class TaskList {
     private final List<Task> tasks;
 

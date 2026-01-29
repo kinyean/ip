@@ -10,6 +10,9 @@ import king.ui.Ui;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+/**
+ * Command that creates a task that have a deadline
+ */
 public class DeadlineCommand extends Command {
     private final String desc;
     private final LocalDateTime by;
