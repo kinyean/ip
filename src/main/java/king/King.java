@@ -17,7 +17,6 @@ public class King {
     public King(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-
         TaskList loaded;
         try {
             loaded = new TaskList(storage.load());
@@ -30,13 +29,11 @@ public class King {
 
     public void run() {
         ui.showWelcome();
-
         while (true) {
             try {
                 String input = ui.readCommand();
                 Command command = Parser.parse(input); // parse USER command
                 command.execute(tasks, ui, storage);
-
                 if (command.isExit()) {
                     ui.showBye();
                     break;
