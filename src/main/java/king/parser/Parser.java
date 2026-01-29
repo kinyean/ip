@@ -36,6 +36,7 @@ public final class Parser {
             case "unmark"   -> new MarkCommand(parseIndex(args), false);
             case "delete"   -> new DeleteCommand(parseIndex(args));
             case "todo"     -> new TodoCommand(args);
+            case "find"     -> new FindCommand(args);
             case "deadline" -> parseDeadline(args);
             case "event"    -> parseEvent(args);
             default         -> throw new KingException("No such Command");
