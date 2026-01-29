@@ -1,13 +1,18 @@
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
+
 public class King {
     public static void main(String[] args) throws KingException{
         Scanner scan = new Scanner(System.in);
-        List<Task> tarr = new ArrayList<>();
+        List<Task> tarr;
         Storage storage = new Storage("data/king.txt");
+        DateTimeFormatter INPUT_FORMAT =
+                DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
 
         String greet = "____________________________________________________________\n" +
                 " Hello! I'm King\n" +
@@ -58,12 +63,13 @@ public class King {
                     continue;
                 } else if (s[0].equals("deadline")) {
                     String[] temp = s[1].split("/by");
-                    tarr.add(new Deadline(temp[0].trim(), temp[1].trim()));
+                    tarr.add(new Deadline(temp[0].trim(), LocalDateTime.parse(temp[1].trim(),INPUT_FORMAT)));
                     storage.save(tarr);
                 } else if (s[0].equals("event")) {
                     String[] temp = s[1].split("/from", 2);
                     String[] temp2 = temp[1].split("/to");
-                    tarr.add(new Event(temp[0].trim(), temp2[0].trim(), temp2[1].trim()));
+                    tarr.add(new Event(temp[0].trim(), LocalDateTime.parse(temp2[0].trim(),INPUT_FORMAT),
+                            LocalDateTime.parse(temp2[1].trim(),INPUT_FORMAT)));
                     storage.save(tarr);
                 } else if (s[0].equals("todo")) {
                     String desc = s.length == 2 ? s[1] : "";
