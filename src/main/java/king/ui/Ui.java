@@ -1,3 +1,8 @@
+package king.ui;
+
+import king.task.Task;
+import king.task.TaskList;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -5,7 +10,7 @@ public class Ui {
 
     public void showWelcome() {
         System.out.println("____________________________________________________________");
-        System.out.println(" Hello! I'm King");
+        System.out.println(" Hello! I'm king.King");
         System.out.println(" What can I do for you?");
         System.out.println("____________________________________________________________");
     }

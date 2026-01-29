@@ -1,3 +1,9 @@
+package king.storage;
+
+import king.exception.KingException;
+import king.parser.Parser;
+import king.task.Task;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -1,3 +1,11 @@
+package king.parser;
+
+import king.command.*;
+import king.exception.KingException;
+import king.task.Deadline;
+import king.task.Event;
+import king.task.Task;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -37,22 +45,22 @@ public final class Parser {
     private static Command parseDeadline(String args) throws KingException {
         // expected: <desc> /by <d/MM/yyyy HHmm>
         if (args.isBlank()) {
-            throw new KingException("Deadline format: deadline <desc> /by <d/MM/yyyy HHmm>");
+            throw new KingException("king.task.Deadline format: deadline <desc> /by <d/MM/yyyy HHmm>");
         }
 
         String[] parts = args.split("/by", 2);
         if (parts.length < 2) {
-            throw new KingException("Deadline format: deadline <desc> /by <d/MM/yyyy HHmm>");
+            throw new KingException("king.task.Deadline format: deadline <desc> /by <d/MM/yyyy HHmm>");
         }
 
         String desc = parts[0].trim();
         String when = parts[1].trim();
 
         if (desc.isEmpty()) {
-            throw new KingException("Deadline description cannot be empty.");
+            throw new KingException("king.task.Deadline description cannot be empty.");
         }
         if (when.isEmpty()) {
-            throw new KingException("Deadline must have a /by date time.");
+            throw new KingException("king.task.Deadline must have a /by date time.");
         }
 
         LocalDateTime by = parseDateTime(when);
@@ -62,29 +70,29 @@ public final class Parser {
     private static Command parseEvent(String args) throws KingException {
         // expected: <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>
         if (args.isBlank()) {
-            throw new KingException("Event format: event <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>");
+            throw new KingException("king.task.Event format: event <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>");
         }
 
         String[] first = args.split("/from", 2);
         if (first.length < 2) {
-            throw new KingException("Event format: event <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>");
+            throw new KingException("king.task.Event format: event <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>");
         }
 
         String desc = first[0].trim();
         if (desc.isEmpty()) {
-            throw new KingException("Event description cannot be empty.");
+            throw new KingException("king.task.Event description cannot be empty.");
         }
 
         String[] second = first[1].split("/to", 2);
         if (second.length < 2) {
-            throw new KingException("Event format: event <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>");
+            throw new KingException("king.task.Event format: event <desc> /from <d/MM/yyyy HHmm> /to <d/MM/yyyy HHmm>");
         }
 
         String fromStr = second[0].trim();
         String toStr = second[1].trim();
 
         if (fromStr.isEmpty() || toStr.isEmpty()) {
-            throw new KingException("Event must have both /from and /to date times.");
+            throw new KingException("king.task.Event must have both /from and /to date times.");
         }
 
         LocalDateTime from = parseDateTime(fromStr);
@@ -92,17 +100,17 @@ public final class Parser {
 
         // Optional but nice validation
         if (to.isBefore(from)) {
-            throw new KingException("Event end time cannot be before start time.");
+            throw new KingException("king.task.Event end time cannot be before start time.");
         }
 
         return new EventCommand(desc, from, to);
     }
 
     /**
-     * Returns a Task object from parsing the String param
+     * Returns a king.task.Task object from parsing the String param
      *
      * @param line line from file
-     * @return Task Object
+     * @return king.task.Task Object
      * @throws KingException if line is empty
      */
     public static Task parseTaskFromLine(String line) throws KingException {
@@ -138,7 +146,7 @@ public final class Parser {
         if (arg.isBlank()) throw new KingException("Missing task number.");
         try {
             int oneBased = Integer.parseInt(arg);
-            if (oneBased < 1) throw new KingException("Task number must be >= 1.");
+            if (oneBased < 1) throw new KingException("king.task.Task number must be >= 1.");
             return oneBased - 1;
         } catch (NumberFormatException e) {
             throw new KingException("Please provide a valid task number.");

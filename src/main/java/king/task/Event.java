@@ -1,11 +1,15 @@
+package king.task;
+
+import king.exception.KingException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Event extends Task{
+public class Event extends Task {
     private LocalDateTime from;
     private LocalDateTime to;
 
-    public Event(String description, LocalDateTime from, LocalDateTime to) throws KingException{
+    public Event(String description, LocalDateTime from, LocalDateTime to) throws KingException {
         super(description);
         this.from = from;
         this.to = to;
