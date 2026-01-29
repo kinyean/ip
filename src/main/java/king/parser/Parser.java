@@ -119,6 +119,10 @@ public final class Parser {
         // "E | 0 | desc | from | to"
         String[] parts = line.split(" \\| ");
 
+        for (int i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].trim();
+        }
+
         String type = parts[0];
         boolean done = parts[1].equals("1");
         String desc = parts[2];
