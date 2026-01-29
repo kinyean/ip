@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 
 public final class Parser {
 
@@ -24,8 +25,8 @@ public final class Parser {
 
         Task task = switch (type) {
             case "T" -> new Task(desc);
-            case "D" -> new Deadline(desc, parts[3]);
-            case "E" -> new Event(desc, parts[3], parts[4]);
+            case "D" -> new Deadline(desc, LocalDateTime.parse(parts[3]));
+            case "E" -> new Event(desc, LocalDateTime.parse(parts[3]), LocalDateTime.parse(parts[4]));
             default -> throw new KingException("Corrupted save line: " + line);
         };
 
