@@ -31,7 +31,7 @@ public class Storage {
 
         for (String line : lines) {
             if (line.trim().isEmpty()) continue;
-            //tasks.add(Parser.parseTaskFromLine(line));
+            tasks.add(Parser.parseTaskFromLine(line));
         }
         return tasks;
     }
