@@ -4,6 +4,9 @@ import king.exception.KingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Class that extends from Task that contains one deadline
+ */
 public class Deadline extends Task {
 
     private LocalDateTime by;

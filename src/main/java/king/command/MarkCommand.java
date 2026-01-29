@@ -8,6 +8,9 @@ import king.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * Command that Mark or Unmark a selected task
+ */
 public class MarkCommand extends Command {
 
     private int index;

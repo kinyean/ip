@@ -8,6 +8,9 @@ import king.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * Command that creates a basic Task
+ */
 public class TodoCommand extends Command {
     private final String desc;
 

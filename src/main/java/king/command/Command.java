@@ -7,8 +7,19 @@ import king.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * Abstract class of all the commands that the user can give
+ */
 public abstract class Command {
 
+    /**
+     * Executes a certain function on the tasks
+     * @param tasks a list of tasks in class TaskList
+     * @param ui Ui to be shown in the terminal
+     * @param storage Storage where data is stored
+     * @throws IOException
+     * @throws KingException if an error occurs when manipulating tasks
+     */
     public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, KingException;
     public boolean isExit() {
         return false;

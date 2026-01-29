@@ -4,6 +4,9 @@ import king.storage.Storage;
 import king.task.TaskList;
 import king.ui.Ui;
 
+/**
+ * Command that exits the chatbot
+ */
 public class ExitCommand extends Command {
 
     @Override

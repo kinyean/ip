@@ -12,6 +12,9 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that stores chatbot data in a file
+ */
 public class Storage {
     private Path path;
 

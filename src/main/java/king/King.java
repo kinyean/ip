@@ -9,11 +9,17 @@ import king.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * A Class that creates a chatbot in the terminal
+ */
 public class King {
     private final Storage storage;
     private final TaskList tasks;
     private final Ui ui;
 
+    /**
+     * Constructor that takes in a filePath to store data
+     */
     public King(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -28,6 +34,9 @@ public class King {
         tasks = loaded;
     }
 
+    /**
+     * Runs the chatbot
+     */
     public void run() {
         ui.showWelcome();
 

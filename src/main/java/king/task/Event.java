@@ -5,6 +5,10 @@ import king.exception.KingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Class that extends from Task that have two LocalDateTime objects,
+ * Starting and ending time
+ */
 public class Event extends Task {
     private LocalDateTime from;
     private LocalDateTime to;
