@@ -36,4 +36,20 @@ public class TaskList {
     public List<Task> asList() {
         return tasks; // for storage.save(...)
     }
+
+    /**
+     * Return a list of tasks that contain the keyword in their description
+     * @param keyword
+     * @return List<Task>
+     */
+    public List<Task> find(String keyword) {
+        String k = keyword.toLowerCase();
+        List<Task> results = new ArrayList<>();
+        for (Task t : tasks) {
+            if (t.getDescription().toLowerCase().contains(k)) {
+                results.add(t);
+            }
+        }
+        return results;
+    }
 }

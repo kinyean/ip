@@ -3,6 +3,7 @@ package king.ui;
 import king.task.Task;
 import king.task.TaskList;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
@@ -60,6 +61,16 @@ public class Ui {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+    }
+
+    public void showFindResults(List<Task> matches) {
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < matches.size(); i++) {
+            System.out.println((i + 1) + ". " + matches.get(i));
+        }
+        if (matches.isEmpty()) {
+            System.out.println("(no matches)");
         }
     }
 }
