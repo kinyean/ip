@@ -1,3 +1,11 @@
+package king.command;
+
+import king.exception.KingException;
+import king.storage.Storage;
+import king.task.Task;
+import king.task.TaskList;
+import king.ui.Ui;
+
 import java.io.IOException;
 
 public class DeleteCommand extends Command {

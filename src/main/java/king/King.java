@@ -1,3 +1,12 @@
+package king;
+
+import king.command.Command;
+import king.exception.KingException;
+import king.parser.Parser;
+import king.storage.Storage;
+import king.task.TaskList;
+import king.ui.Ui;
+
 import java.io.IOException;
 
 public class King {

@@ -1,11 +1,14 @@
+package king.task;
+
+import king.exception.KingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Deadline extends Task{
+public class Deadline extends Task {
 
     private LocalDateTime by;
 
-    public Deadline(String description, LocalDateTime by) throws KingException{
+    public Deadline(String description, LocalDateTime by) throws KingException {
         super(description);
         this.by = by;
     }
