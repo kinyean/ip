@@ -1,13 +1,13 @@
 package king;
 
+import java.io.IOException;
+
 import king.command.Command;
 import king.exception.KingException;
 import king.parser.Parser;
 import king.storage.Storage;
 import king.task.TaskList;
 import king.ui.Ui;
-
-import java.io.IOException;
 
 /**
  * A Class that creates a chatbot in the terminal
