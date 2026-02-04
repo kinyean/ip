@@ -10,8 +10,7 @@ import king.ui.Ui;
 public class ExitCommand extends Command {
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) { }
-
-    @Override
-    public boolean isExit() { return true; }
+    public CommandResult execute(TaskList tasks, Storage storage) {
+        return new CommandResult("Bye. Hope to see you again soon!", true);
+    }
 }

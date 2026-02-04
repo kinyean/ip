@@ -3,6 +3,7 @@ package king;
 import java.io.IOException;
 
 import king.command.Command;
+import king.command.CommandResult;
 import king.exception.KingException;
 import king.parser.Parser;
 import king.storage.Storage;
@@ -17,6 +18,9 @@ public class King {
     private final TaskList tasks;
     private final Ui ui;
 
+    public King() {
+        this("data/king.txt");
+    }
     /**
      * Constructor that takes in a filePath to store data
      */
@@ -34,6 +38,21 @@ public class King {
     }
 
     /**
+     * Returns a Command Result from input String
+     * @param input
+     * @return
+     */
+    public CommandResult getResponse(String input) {
+        try {
+            Command command = Parser.parse(input);
+            return command.execute(tasks, storage);
+        } catch (Exception e) {
+            return new CommandResult(e.getMessage(), false);
+        }
+    }
+
+
+    /**
      * Runs the chatbot
      */
     public void run() {
@@ -41,13 +60,13 @@ public class King {
         while (true) {
             try {
                 String input = ui.readCommand();
-                Command command = Parser.parse(input); // parse USER command
-                command.execute(tasks, ui, storage);
-                if (command.isExit()) {
+                CommandResult result = getResponse(input);
+                ui.showMessage(result.feedback);
+                if (result.isExit) {
                     ui.showBye();
                     break;
                 }
-            } catch (IOException | KingException e) {
+            } catch (Exception e) {
                 ui.showError(e.getMessage());
             }
         }

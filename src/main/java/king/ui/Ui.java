@@ -73,5 +73,10 @@ public class Ui {
             System.out.println("(no matches)");
         }
     }
+
+    public void showMessage(String message) {
+        System.out.println(message);
+    }
+
 }
 

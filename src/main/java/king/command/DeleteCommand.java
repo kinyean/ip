@@ -19,9 +19,13 @@ public class DeleteCommand extends Command {
         this.index = index;
     }
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, KingException {
-        Task removed = tasks.remove(index); //-1 cause oneBased
-        ui.showDeleted(removed, tasks.size());
+    public CommandResult execute(TaskList tasks, Storage storage) throws IOException, KingException {
+        Task removed = tasks.remove(index);
         storage.save(tasks.asList());
+        String message = "Noted. I've removed this task:\n"
+                + "  " + removed + "\n"
+                + "Now you have " + tasks.size() + " tasks in the list.";
+
+        return new CommandResult(message, false);
     }
 }

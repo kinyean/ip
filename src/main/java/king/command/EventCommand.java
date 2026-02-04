@@ -5,7 +5,6 @@ import king.storage.Storage;
 import king.task.Event;
 import king.task.Task;
 import king.task.TaskList;
-import king.ui.Ui;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -25,11 +24,16 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, KingException {
+    public CommandResult execute(TaskList tasks, Storage storage) throws IOException, KingException {
         Task t = new Event(desc, from, to);
         tasks.add(t);
-        ui.showAdded(t, tasks.size());
         storage.save(tasks.asList());
+        String message = "Got it. I've added this task:\n"
+                + "  " + t + "\n"
+                + "Now you have " + tasks.size() + " tasks in the list.";
+
+        return new CommandResult(message, false);
+
     }
 }
 

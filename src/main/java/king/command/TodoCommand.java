@@ -4,7 +4,6 @@ import king.exception.KingException;
 import king.storage.Storage;
 import king.task.Task;
 import king.task.TaskList;
-import king.ui.Ui;
 
 import java.io.IOException;
 
@@ -19,11 +18,16 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, KingException {
+    public CommandResult execute(TaskList tasks, Storage storage) throws IOException, KingException {
         Task t = new Task(desc);
         tasks.add(t);
-        ui.showAdded(t, tasks.size());
         storage.save(tasks.asList());
+        String message = "Got it. I've added this task:\n"
+                + "  " + t + "\n"
+                + "Now you have " + tasks.size() + " tasks in the list.";
+
+        return new CommandResult(message, false);
+
     }
 }
 

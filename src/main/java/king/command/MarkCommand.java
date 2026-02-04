@@ -4,7 +4,6 @@ import king.exception.KingException;
 import king.storage.Storage;
 import king.task.Task;
 import king.task.TaskList;
-import king.ui.Ui;
 
 import java.io.IOException;
 
@@ -22,15 +21,16 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, KingException {
-        Task markTask = tasks.get(index); //-1 because the list is oneBased
+    public CommandResult execute(TaskList tasks, Storage storage) throws IOException, KingException {
+        Task markTask = tasks.get(index);
         if (isDone) {
             markTask.mark();
-            ui.showMarked(markTask);
+            storage.save(tasks.asList());
+            return new CommandResult("Nice! I've marked this task as done:\n  " + markTask, false);
         } else {
             markTask.unmark();
-            ui.showUnmarked(markTask);
+            storage.save(tasks.asList());
+            return new CommandResult("OK, I've marked this task as not done yet:\n  " + markTask, false);
         }
-        storage.save(tasks.asList());
     }
 }
