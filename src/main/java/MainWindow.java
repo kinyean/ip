@@ -45,7 +45,7 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         CommandResult response = king.getResponse(input);
-        dialogContainer.getChildren().addAll(
+        addDialogs(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getKingDialog(response.feedback, kingImage)
         );
@@ -53,6 +53,9 @@ public class MainWindow extends AnchorPane {
         if (response.isExit) {
             Platform.exit();
         }
+    }
+    private void addDialogs(DialogBox... dialogBoxes) {
+        dialogContainer.getChildren().addAll(dialogBoxes);
     }
 }
 
