@@ -29,6 +29,7 @@ public final class Parser {
      * @throws KingException if no such command exist
      */
     public static Command parse(String input) throws KingException {
+        assert input != null : "Input to parser should not be null";
         String trimmed = input.trim();
         if (trimmed.isEmpty()) {
             throw new KingException("Please enter a command.");
