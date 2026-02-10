@@ -31,6 +31,9 @@ public class EventCommand extends Command {
     @Override
     public CommandResult execute(TaskList tasks, Storage storage) throws IOException, KingException {
         Task t = new Event(desc, from, to);
+        if (tasks.containsDuplicate(t)) {
+            throw new KingException("Duplicate task detected:\n  " + t);
+        }
         tasks.add(t);
         storage.save(tasks.asList());
         String message = "Got it. I've added this task:\n"

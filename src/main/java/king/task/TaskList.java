@@ -52,4 +52,34 @@ public class TaskList {
         }
         return results;
     }
+    public boolean containsDuplicate(Task candidate) {
+        assert candidate != null : "Candidate task should not be null";
+
+        return tasks.stream().anyMatch(existing -> isDuplicateOf(existing, candidate));
+    }
+
+    private boolean isDuplicateOf(Task a, Task b) {
+        if (!a.getClass().equals(b.getClass())) {
+            return false;
+        }
+
+        String aDesc = a.getDescription().trim().toLowerCase();
+        String bDesc = b.getDescription().trim().toLowerCase();
+        if (!aDesc.equals(bDesc)) {
+            return false;
+        }
+
+        // Type-specific checks
+        if (a instanceof Deadline da && b instanceof Deadline db) {
+            return da.getBy().equals(db.getBy());
+        }
+
+        if (a instanceof Event ea && b instanceof Event eb) {
+            return ea.getFrom().equals(eb.getFrom()) && ea.getTo().equals(eb.getTo());
+        }
+
+        // Todo: same class + same normalized description is enough
+        return true;
+    }
+
 }
