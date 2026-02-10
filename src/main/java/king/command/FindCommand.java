@@ -4,7 +4,6 @@ import king.exception.KingException;
 import king.storage.Storage;
 import king.task.Task;
 import king.task.TaskList;
-import king.ui.Ui;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,9 +27,10 @@ public class FindCommand extends Command {
         if (matches.isEmpty()) {
             sb.append("(no matches)");
         } else {
-            for (int i = 0; i < matches.size(); i++) {
-                sb.append(i + 1).append(". ").append(matches.get(i)).append("\n");
-            }
+            String result = java.util.stream.IntStream.range(0, matches.size())
+                    .mapToObj(i -> (i + 1) + ". " + matches.get(i))
+                    .collect(java.util.stream.Collectors.joining("\n"));
+            sb.append(result);
         }
 
         return new CommandResult(sb.toString().trim(), false);
