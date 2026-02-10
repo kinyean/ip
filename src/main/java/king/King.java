@@ -38,9 +38,10 @@ public class King {
     }
 
     /**
-     * Returns a Command Result from input String
-     * @param input
-     * @return
+     * Processes a user input string and returns the result of executing the corresponding command.
+     *
+     * @param input User input string
+     * @return Result of command execution
      */
     public CommandResult getResponse(String input) {
         try {
