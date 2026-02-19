@@ -1,0 +1,1 @@
+I have used ChatGPT for some minor increments of code, for example, formatting and the writing of docs
