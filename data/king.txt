@@ -1,2 +1,2 @@
-T | 0 | lool
 T | 1 | Tutorial
+T | 1 | CS2103
